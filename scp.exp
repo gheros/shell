@@ -1,7 +1,7 @@
 #!/usr/bin/expect
 set timeout 10
 set host [lindex $argv 0]
-set password "Net.crawler"
+set password "**"
 set src_file [lindex $argv 1]
 
 spawn scp $src_file ubuntu@$host:~/jar
