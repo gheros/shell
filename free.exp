@@ -1,0 +1,13 @@
+#!/usr/bin/expect -f
+set timeout 10
+set host [lindex $argv 0]
+set password "Net.crawler"
+set jar_file  [lindex $argv 1]
+spawn ssh ubuntu@$host -p 22
+    expect {
+        "(yes/no)" { send "yes\r";exp_continue }
+        "password" { send "$password\r"}
+    }
+    expect ubuntu@* {send "free -h\r"}
+    expect ubuntu@* {send "exit\r"}
+    expect eof
